@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // A collection with all my users
-// Users are part of the chat
+// and Users class is a part of the chat
 public class Users{
     private int i = 0; // number of users
     private ArrayList<User> userList;
@@ -27,6 +27,10 @@ public class Users{
 
     public void createUser() {
         User newUser = new User();
+        System.out.println("\nEnter Name:");
+        newUser.name = scan.nextLine();
+        System.out.println("\nEnter password:");
+        newUser.password = scan.nextLine();
         addUser(newUser);
     }
 
@@ -39,12 +43,12 @@ public class Users{
         // Ask user for a name input
         // Check if name is the same as we have in the System
         while (!loggedIn) {
-            System.out.println("Enter name:\n");
+            System.out.println("\nEnter name:");
             String name = scan.nextLine();
             boolean userFound = false;
             for (User i : userList) {
                 if (i.name.equals(name)) {
-                    System.out.println("Enter password:\n");
+                    System.out.println("\nEnter password:");
                     String passwordIn = scan.nextLine();
                     if (passwordIn.equals(i.password)) {
                         System.out.println("\nYou've successfully logged in!");

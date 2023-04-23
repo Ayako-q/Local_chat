@@ -9,26 +9,32 @@ class Chat
     Scanner scan = new Scanner(System.in);
     User newUser = new User();
     public Chat(){
-        while(true)
-        {
+        boolean exit = false;
+        while(!exit) {
             scene();
-            int answ = scan.nextInt();
-            if(answ == 1)
+            int answ;
+            try
             {
-                newUser.createUser();
+                answ = scan.nextInt();
+                if (answ == 1) {
+                    newUser.createUser();
+                } else if (answ == 2) {
+                    newUser.messages.showMessages();
+                } else if (answ == 3) {
+                    newUser.sendText();
+                } else if (answ == 4) {
+                    newUser.sendContact();
+                } else if (answ == 0) {
+                    System.out.println("\n\u001B[31m====Finishing your session====\u001B[0m\n");
+                    exit = true;
+                } else {
+                    System.out.println("\n\u001B[31m====Thats not the proper answer====\u001B[0m\n");
+                }
+            } catch (Exception e) {
+                System.out.println("\n\u001B[31m====Thats not the proper answer====\u001B[0m\n");
+                throw new RuntimeException(e);
             }
-            else if (answ == 2)
-            {
-                newUser.messages.showMessages();
-            }
-            else if (answ == 3)
-            {
-                newUser.sendText();
-            }
-            else if (answ == 4)
-            {
-                newUser.sendText();
-            }
+
         }
     }
 
@@ -40,12 +46,13 @@ class Chat
         Hi, this is your chat! What would you like to do?
         1. Create user
         2. Show my chats
-        3. Textmessage
-        4. Voice message
-        5. Image
-        6. LocationMessage
-        7. ContactMessage
-        8. File
+        3. Text message
+        4. Contact message
+        5. Image message
+        6. Location message
+        7. Voice message
+        8. File output whole chat
+        0. Exit
         \u001B[0m
         """);
     }

@@ -11,14 +11,11 @@ public class User extends Users
     Date date = new Date();
     Scanner scan = new Scanner(System.in);
     // simple method to add name and password to the
+    @Override
     public void createUser()
     {
-        System.out.println("\nEnter Name:\n");
-        this.name = scan.nextLine();
-        System.out.println("\nEnter password:\n");
-        this.password = scan.nextLine();
-        System.out.println("\n\u001B[32m====User created====\u001B[0m\n");
         super.createUser();
+        System.out.println("\n\u001B[32m====User created====\u001B[0m\n");
     }
 
     public void sendText()
@@ -33,6 +30,28 @@ public class User extends Users
         String dateSent = dateFormat.format(sentTime);
         // creating a new TextMessage and adding it to messages
         BaseMessage tnew = new TextMessage(dateSent, name, text);
+        messages.addMessage(tnew);
+        System.out.println("Your messages:\n");
+        messages.showMessages();
+    }
+
+    public void sendContact()
+    {
+        User ourUser = logIn();
+        String name = ourUser.name;
+        // Ask for contact name
+        System.out.println("\nEnter contact name:");
+        String contactName = scan.nextLine();
+        // Ask for contact number
+        System.out.println("\nEnter contact phone number:");
+        String contactNum = scan.nextLine();
+
+        // Saving time the message was sent:
+        Date sentTime = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String dateSent = dateFormat.format(sentTime);
+        // creating a new TextMessage and adding it to messages
+        BaseMessage tnew = new ContactMessage(dateSent, name, contactName, contactNum);
         messages.addMessage(tnew);
         System.out.println("Your messages:\n");
         messages.showMessages();
