@@ -3,6 +3,7 @@ package Part_2_2;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+
 public class User extends Users
 {
     protected String name;
@@ -18,6 +19,9 @@ public class User extends Users
         System.out.println("\n\u001B[32m====User created====\u001B[0m\n");
     }
 
+    public String getUserInfo() {
+        return "User name: " + name + "| user password: " + password;
+    }
     public void sendText()
     {
         User ourUser = logIn();

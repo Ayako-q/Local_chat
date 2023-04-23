@@ -2,6 +2,10 @@ package Part_2_2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.*;
 
 // A collection with all my users
 // and Users class is a part of the chat
@@ -34,6 +38,52 @@ public class Users{
         addUser(newUser);
     }
 
+    public void exportUsers()
+    {
+        try {
+            FileWriter writer = new FileWriter("usersOutput.txt");
+            for (User user : userList) {
+                writer.write(user.getUserInfo() + "\n");
+            }
+            writer.close();
+            System.out.println("Users written to file.");
+        } catch (IOException e) {
+            System.out.println("Error writing to file.");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void importUsersFromFile() {
+        System.out.println("Enter file name:\n");
+        String filename = scan.nextLine();
+        try
+        {
+            File file = new File(filename);
+            Scanner scanner = new Scanner(file);
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split("\\|");
+                String[] nameParts = parts[0].split(":");
+                String[] passwordParts = parts[1].split(":");
+                String name = nameParts[1].trim();
+                String password = passwordParts[1].trim();
+
+                User newUser = new User();
+                newUser.name = name;
+                newUser.password = password;
+                userList.add(newUser);
+            }
+            System.out.println("\n\u001B[33m====You've successfully imported users====\u001B[0m");
+            scanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("\n\u001B[31m====Error importing from file - file not found====\u001B[0m");
+            throw new RuntimeException(e);
+        }
+    }
+
+
     Scanner scan = new Scanner(System.in);
 
     // A method to go through users and login into one or create a new if the user does not exist yet
@@ -51,7 +101,7 @@ public class Users{
                     System.out.println("\nEnter password:");
                     String passwordIn = scan.nextLine();
                     if (passwordIn.equals(i.password)) {
-                        System.out.println("\nYou've successfully logged in!");
+                        System.out.println("\n\u001B[33m====You've successfully logged in====\u001B[0m");
                         loggedIn = true;
                         userFound = true;
                         user = i;

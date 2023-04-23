@@ -23,7 +23,11 @@ class Chat
                 } else if (answ == 3) {
                     newUser.sendText();
                 } else if (answ == 4) {
-                    newUser.sendContact();
+                    newUser.sendContact();}
+                else if (answ == 8) {
+                    newUser.exportUsers();}
+                else if (answ == 9) {
+                    newUser.importUsersFromFile();
                 } else if (answ == 0) {
                     System.out.println("\n\u001B[31m====Finishing your session====\u001B[0m\n");
                     exit = true;
@@ -34,7 +38,6 @@ class Chat
                 System.out.println("\n\u001B[31m====Thats not the proper answer====\u001B[0m\n");
                 throw new RuntimeException(e);
             }
-
         }
     }
 
@@ -48,22 +51,13 @@ class Chat
         2. Show my chats
         3. Text message
         4. Contact message
-        5. Image message
-        6. Location message
-        7. Voice message
-        8. File output whole chat
+        5. Image message (Not working)
+        6. Location message (Not working)
+        7. Voice message (Not working)
+        8. File export users/chat
+        9. Input users/chat from file 
         0. Exit
         \u001B[0m
         """);
-    }
-
-    public void ShowTextMessages()
-    {
-
-    }
-
-    public void log()
-    {
-
     }
 }
