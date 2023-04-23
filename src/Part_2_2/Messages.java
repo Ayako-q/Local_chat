@@ -2,7 +2,7 @@ package Part_2_2;
 
 import java.util.ArrayList;
 
-public class Messages extends User{
+public class Messages {
     private ArrayList<BaseMessage> messageList;
 
     public Messages()

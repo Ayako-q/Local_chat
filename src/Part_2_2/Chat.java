@@ -11,7 +11,6 @@ class Chat
     public Chat(){
         while(true)
         {
-
             scene();
             int answ = scan.nextInt();
             if(answ == 1)
@@ -20,15 +19,20 @@ class Chat
             }
             else if (answ == 2)
             {
-
+                newUser.messages.showMessages();
             }
             else if (answ == 3)
+            {
+                newUser.sendText();
+            }
+            else if (answ == 4)
             {
                 newUser.sendText();
             }
         }
     }
 
+    //
     public void scene()
     {
         System.out.println("""

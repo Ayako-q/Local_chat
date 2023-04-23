@@ -10,6 +10,6 @@ public class TextMessage extends BaseMessage {
 
     public String output()
     {
-        return this.author + " : " + this.text + "\nDate sent: " + this.date;
+        return this.author + " : " + this.text + "\nDate sent: " + this.date + "\n";
     }
 }

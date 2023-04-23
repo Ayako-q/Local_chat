@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 // A collection with all my users
 // Users are part of the chat
-public class Users extends Chat{
+public class Users{
     private int i = 0; // number of users
     private ArrayList<User> userList;
 
