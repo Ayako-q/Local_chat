@@ -2,17 +2,21 @@ package Part_2_2;
 
 import java.util.Scanner;
 
+// Chat is a class that handles logic and user interaction with the program
+
 class Chat
 {
     Scanner scan = new Scanner(System.in);
-    public Chat(Users b){
+    User newUser = new User();
+    public Chat(){
         while(true)
         {
+
             scene();
             int answ = scan.nextInt();
             if(answ == 1)
             {
-                b.logIn();
+                newUser.createUser();
             }
             else if (answ == 2)
             {
@@ -20,7 +24,7 @@ class Chat
             }
             else if (answ == 3)
             {
-                b.logIn().sendText();
+                newUser.sendText();
             }
         }
     }
@@ -30,8 +34,8 @@ class Chat
         System.out.println("""
         \n\u001B[33m
         Hi, this is your chat! What would you like to do?
-        1. Login
-        2. Show my chat
+        1. Create user
+        2. Show my chats
         3. Textmessage
         4. Voice message
         5. Image

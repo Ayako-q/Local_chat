@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // A collection with all my users
-public class Users {
+// Users are part of the chat
+public class Users extends Chat{
+    private int i = 0; // number of users
     private ArrayList<User> userList;
 
     public Users() {
@@ -24,23 +26,25 @@ public class Users {
     }
 
     public void createUser() {
-        Users newUser = new Users();
+        User newUser = new User();
+        addUser(newUser);
     }
 
     Scanner scan = new Scanner(System.in);
 
+    // A method to go through users and login into one or create a new if the user does not exist yet
     public User logIn() {
         boolean loggedIn = false;
         User user = new User();
         // Ask user for a name input
         // Check if name is the same as we have in the System
         while (!loggedIn) {
-            System.out.println("\nEnter name:");
+            System.out.println("Enter name:\n");
             String name = scan.nextLine();
             boolean userFound = false;
             for (User i : userList) {
                 if (i.name.equals(name)) {
-                    System.out.println("\nEnter password:");
+                    System.out.println("Enter password:\n");
                     String passwordIn = scan.nextLine();
                     if (passwordIn.equals(i.password)) {
                         System.out.println("\nYou've successfully logged in!");
@@ -53,6 +57,8 @@ public class Users {
                     }
                 }
             }
+            // if we can't find user, simply ask if he/she (USER) wants to create a new one
+            // and if we create a new one - we ask USER to login into created user
             if (!userFound) {
                 System.out.println("\nName incorrect, want to create such user? Type Y/N");
                 String answ = scan.nextLine();
@@ -63,7 +69,7 @@ public class Users {
                 }
             }
         }
-        return user;
+        return user; // in the end we return a user our USER wants to log into
     }
 }
 

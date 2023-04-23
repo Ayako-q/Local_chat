@@ -22,9 +22,9 @@ public class Messages extends User{
 
     public void showMessages()
     {
-        for(BaseMessage i : messageList)
+        for(int i = 0; i < messageList.size(); i++)
         {
-            System.out.println(i.output());
+            System.out.println(messageList.get(i).output());
         }
     }
 }
