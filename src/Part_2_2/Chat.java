@@ -51,9 +51,7 @@ class Chat
         2. Show my chats
         3. Text message
         4. Contact message
-        5. Image message (Not working)
-        6. Location message (Not working)
-        7. Voice message (Not working)
+        -
         8. File export users/chat
         9. Input users/chat from file 
         0. Exit

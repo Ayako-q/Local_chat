@@ -7,3 +7,4 @@ User name: Valeriy2023| user password: 77
 User name: Valentyna1998| user password: qwertyuiop
 User name: Userr| user password: 3333
 User name: Vladyslav| user password: 4444
+User name: Eugene| user password: 1

@@ -1,7 +1,7 @@
 package Part_2;
 
 // 2.1.1 Create a superclass (base class / parent class)
-public class BaseClass
+class BaseClass
 {
     // Part 2.1.3 superclass instance variables of different types
     public int i = 2015;
