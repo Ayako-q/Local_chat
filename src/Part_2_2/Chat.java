@@ -1,6 +1,10 @@
 package Part_2_2;
 
+import java.awt.*;
 import java.util.Scanner;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 // Chat is a class that handles logic and user interaction with the program
 
@@ -9,8 +13,9 @@ class Chat
     Scanner scan = new Scanner(System.in);
     User newUser = new User();
     public Chat(){
+        scene();
         boolean exit = false;
-        while(!exit) {
+        /*while(!exit) {
             scene();
             int answ;
             try
@@ -27,7 +32,7 @@ class Chat
 
                 else if (answ == 6) {
                     newUser.messages.exportChat();}
-
+                // 7 coming soon
                 else if (answ == 8) {
                     newUser.exportUsers();}
                 else if (answ == 9) {
@@ -42,13 +47,53 @@ class Chat
                 System.out.println("\n\u001B[31m====Thats not the proper answer====\u001B[0m\n");
                 throw new RuntimeException(e);
             }
-        }
+        }*/
     }
 
     //
     public void scene()
     {
-        System.out.println("""
+        JFrame mainWindow = new JFrame();
+        mainWindow.setSize(800, 600);
+        mainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        GridLayout gridLayout = new GridLayout(4, 2);
+        panel.setLayout(gridLayout);
+
+        JButton userCreate = new JButton("Create new user");
+        userCreate.addActionListener(a -> newUser.createUser());
+
+        JButton showChat = new JButton("Show messages");
+        showChat.addActionListener(a -> newUser.messages.showMessages());
+
+        JButton sendMessage = new JButton("Send a new message");
+        sendMessage.addActionListener(a -> newUser.sendText());
+
+        JButton sendContact = new JButton("Send a contact message");
+        sendContact.addActionListener(a -> newUser.sendContact());
+
+        JButton exportChat = new JButton("Chat export");
+        exportChat.addActionListener(a -> newUser.messages.exportChat());
+
+        JButton exportUsers = new JButton("Users export");
+        exportUsers.addActionListener(a -> newUser.exportUsers());
+
+        JButton usersImport = new JButton("Users import");
+        usersImport.addActionListener(a -> newUser.importUsersFromFile());
+
+
+        panel.add(userCreate);
+        panel.add(showChat);
+        panel.add(sendMessage);
+        panel.add(sendContact);
+        panel.add(exportChat);
+        panel.add(exportUsers);
+        panel.add(usersImport);
+
+        mainWindow.add(panel);
+        mainWindow.setVisible(true);
+        /*System.out.println("""
         \n\u001B[33m
         Hi, this is your chat! What would you like to do?
         1. Create user
@@ -62,6 +107,6 @@ class Chat
         9. Users import
         0. Exit
         \u001B[0m
-        """);
+        """);*/
     }
 }
