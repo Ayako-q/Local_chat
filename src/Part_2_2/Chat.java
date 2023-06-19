@@ -24,6 +24,10 @@ class Chat
                     newUser.sendText();
                 } else if (answ == 4) {
                     newUser.sendContact();}
+
+                else if (answ == 6) {
+                    newUser.messages.exportChat();}
+
                 else if (answ == 8) {
                     newUser.exportUsers();}
                 else if (answ == 9) {
@@ -52,8 +56,10 @@ class Chat
         3. Text message
         4. Contact message
         -
-        8. File export users/chat
-        9. Input users/chat from file 
+        6. Chats export
+        7. Chats import
+        8. Users export
+        9. Users import
         0. Exit
         \u001B[0m
         """);

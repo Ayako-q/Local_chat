@@ -8,5 +8,4 @@ public class Main {
     {
         Chat chat1 = new Chat();
     }
-
 }
