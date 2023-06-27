@@ -3,8 +3,7 @@ package Part_2_2;
 import java.awt.*;
 import java.util.Scanner;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 // Chat is a class that handles logic and user interaction with the program
 
@@ -61,8 +60,13 @@ class Chat
         GridLayout gridLayout = new GridLayout(4, 2);
         panel.setLayout(gridLayout);
 
+        // Adding buttons with functionality (they call local functions of User class)
+
         JButton userCreate = new JButton("Create new user");
-        userCreate.addActionListener(a -> newUser.createUser());
+        userCreate.addActionListener(a ->
+                newUser.createUser(JOptionPane.showInputDialog(panel, "Enter new users name").toString(),
+                        JOptionPane.showInputDialog(panel, "Enter new users password").toString())
+        );
 
         JButton showChat = new JButton("Show messages");
         showChat.addActionListener(a -> newUser.messages.showMessages());
@@ -82,7 +86,10 @@ class Chat
         JButton usersImport = new JButton("Users import");
         usersImport.addActionListener(a -> newUser.importUsersFromFile());
 
+        JButton exit = new JButton("Exit");
+        exit.addActionListener(a -> System.exit(1));
 
+        // addings those buttons to the scene
         panel.add(userCreate);
         panel.add(showChat);
         panel.add(sendMessage);
@@ -90,8 +97,11 @@ class Chat
         panel.add(exportChat);
         panel.add(exportUsers);
         panel.add(usersImport);
+        panel.add(exit);
 
+        // adding scene to the main window
         mainWindow.add(panel);
+        // Setting main window visible
         mainWindow.setVisible(true);
         /*System.out.println("""
         \n\u001B[33m

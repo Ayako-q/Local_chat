@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class User extends Users
 {
     protected String name;
@@ -13,9 +16,9 @@ public class User extends Users
     Scanner scan = new Scanner(System.in);
     // simple method to add name and password to the
     @Override
-    public void createUser()
+    public void createUser(String name, String password)
     {
-        super.createUser();
+        super.createUser(name, password);
         System.out.println("\n\u001B[32m====User created====\u001B[0m\n");
     }
 

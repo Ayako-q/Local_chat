@@ -7,6 +7,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.*;
 
+import javax.swing.*;
+import java.awt.*;
+
+
 // A collection with all my users
 // and Users class is a part of the chat
 public class Users{
@@ -29,7 +33,16 @@ public class Users{
         return userList;
     }
 
-    public void createUser() {
+    public void createUser(String name, String password)
+    {
+        User newUser = new User();
+        newUser.name = name;
+        newUser.password = password;
+        addUser(newUser);
+    }
+
+    public void createUser()
+    {
         User newUser = new User();
         System.out.println("\nEnter Name:");
         newUser.name = scan.nextLine();
@@ -53,7 +66,8 @@ public class Users{
         }
     }
 
-    public void importUsersFromFile() {
+    public void importUsersFromFile()
+    {
         System.out.println("Enter file name:\n");
         String filename = scan.nextLine();
         try
