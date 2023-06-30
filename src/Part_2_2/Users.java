@@ -33,12 +33,14 @@ public class Users{
         return userList;
     }
 
-    public void createUser(String name, String password)
+    public void createUser(String name, String password, JPanel panel)
     {
         User newUser = new User();
         newUser.name = name;
         newUser.password = password;
         addUser(newUser);
+        Icon successfull = new ImageIcon("/Users/alexseiichenko/IdeaProjects/SDT_101_Project-2/src/Part_2_2/success-icon-10.png");
+        JOptionPane.showMessageDialog(panel, "Sucessfully added a new user!", "Success", JOptionPane.INFORMATION_MESSAGE, successfull);
     }
 
     public void createUser()

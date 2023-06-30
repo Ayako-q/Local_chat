@@ -65,7 +65,7 @@ class Chat
         JButton userCreate = new JButton("Create new user");
         userCreate.addActionListener(a ->
                 newUser.createUser(JOptionPane.showInputDialog(panel, "Enter new users name").toString(),
-                        JOptionPane.showInputDialog(panel, "Enter new users password").toString())
+                        JOptionPane.showInputDialog(panel, "Enter new users password").toString(), panel)
         );
 
         JButton showChat = new JButton("Show messages");
@@ -118,5 +118,17 @@ class Chat
         0. Exit
         \u001B[0m
         """);*/
+    }
+    public void chatWindow()
+    {
+        // creating a new frame
+        JFrame chatFrame = new JFrame();
+        chatFrame.setSize(300, 800);
+        chatFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel();
+        BorderLayout board = new BorderLayout();
+
+
     }
 }

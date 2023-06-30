@@ -16,9 +16,9 @@ public class User extends Users
     Scanner scan = new Scanner(System.in);
     // simple method to add name and password to the
     @Override
-    public void createUser(String name, String password)
+    public void createUser(String name, String password, JPanel panel)
     {
-        super.createUser(name, password);
+        super.createUser(name, password, panel);
         System.out.println("\n\u001B[32m====User created====\u001B[0m\n");
     }
 
