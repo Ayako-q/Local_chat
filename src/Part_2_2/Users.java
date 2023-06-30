@@ -113,7 +113,7 @@ public class Users{
             boolean userFound = false;
             for (User i : userList) {
                 if (i.name.equals(name)) {
-                    String passwordIn = JOptionPane.showInputDialog(null, "Enter Users Password:");
+                    String passwordIn = JOptionPane.showInputDialog("Enter Users Password:");
                     if (passwordIn.equals(i.password)) {
                         JOptionPane.showMessageDialog(null, "You've successfully logged in");
                         loggedIn = true;
@@ -121,7 +121,7 @@ public class Users{
                         user = i;
                         break;
                     } else {
-                        JOptionPane.showMessageDialog(null, "Password incorrect");
+                        JOptionPane.showMessageDialog(null,"Password incorrect");
                     }
                 }
             }
@@ -129,10 +129,10 @@ public class Users{
             // and if we create a new one - we ask USER to login into created user
             if (!userFound) {
                 int answ = JOptionPane.showConfirmDialog(null, "Incorrect! Want to create such user?");
-                if (answ == 2) {
+                if (answ == 0) {
                     User newUser = new User();
-                    newUser.createUser(JOptionPane.showInputDialog(null, "Enter new users name").toString(),
-                            JOptionPane.showInputDialog(null, "Enter new users password").toString(), null);
+                    newUser.createUser(JOptionPane.showInputDialog("Enter new users name"),
+                            JOptionPane.showInputDialog("Enter new users password"), null);
                     userList.add(newUser);
                 }
             }
