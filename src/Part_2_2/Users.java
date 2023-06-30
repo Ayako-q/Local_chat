@@ -70,8 +70,7 @@ public class Users{
 
     public void importUsersFromFile()
     {
-        System.out.println("Enter file name:\n");
-        String filename = scan.nextLine();
+        String filename = "usersOutput.txt";
         try
         {
             File file = new File(filename);
@@ -95,6 +94,7 @@ public class Users{
 
         } catch (FileNotFoundException e) {
             System.out.println("\n\u001B[31m====Error importing from file - file not found====\u001B[0m");
+            JOptionPane.showMessageDialog(null, "\n\u001B[31mError importing from file - file not found\u001B[0m");
             throw new RuntimeException(e);
         }
     }
