@@ -1,5 +1,6 @@
 package Part_2_2;
 
+import javax.swing.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,12 +23,14 @@ public class Messages {
         return messageList;
     }
 
-    public void showMessages()
+    public JLabel showMessages()
     {
+        JLabel chatLabel = new JLabel();
         for(int i = 0; i < messageList.size(); i++)
         {
-            System.out.println(messageList.get(i).output());
+            chatLabel.setText(chatLabel + "\n" + messageList.get(i).output());
         }
+        return chatLabel;
     }
 
     public void exportChat()

@@ -63,13 +63,14 @@ class Chat
         // Adding buttons with functionality (they call local functions of User class)
 
         JButton userCreate = new JButton("Create new user");
+
         userCreate.addActionListener(a ->
                 newUser.createUser(JOptionPane.showInputDialog(panel, "Enter new users name").toString(),
                         JOptionPane.showInputDialog(panel, "Enter new users password").toString(), panel)
         );
 
         JButton showChat = new JButton("Show messages");
-        showChat.addActionListener(a -> newUser.messages.showMessages());
+        showChat.addActionListener(a -> chatWindow(newUser.logIn()));
 
         JButton sendMessage = new JButton("Send a new message");
         sendMessage.addActionListener(a -> newUser.sendText());
@@ -119,7 +120,7 @@ class Chat
         \u001B[0m
         """);*/
     }
-    public void chatWindow()
+    public void chatWindow(User someUser)
     {
         // creating a new frame
         JFrame chatFrame = new JFrame();
@@ -127,8 +128,23 @@ class Chat
         chatFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
-        BorderLayout board = new BorderLayout();
+        GridLayout box = new GridLayout(1, 3);
 
+        // Button that will close additional window
+        JButton back = new JButton("Back");
+        back.addActionListener(a -> chatFrame.getDefaultCloseOperation());
 
+        // Calling function to show chat messages and adding it to the panel
+        JLabel messages = newUser.messages.showMessages();
+
+        JLabel userInfo = new JLabel("User: " + newUser.name);
+
+        mainPanel.add(userInfo);
+        mainPanel.add(messages);
+        mainPanel.add(back);
+
+        // Add panel to the frame and set it visible
+        chatFrame.add(mainPanel);
+        chatFrame.setVisible(true);
     }
 }

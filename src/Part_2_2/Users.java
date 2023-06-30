@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.*;
 
 import javax.swing.*;
-import java.awt.*;
 
 
 // A collection with all my users
@@ -39,6 +37,8 @@ public class Users{
         newUser.name = name;
         newUser.password = password;
         addUser(newUser);
+
+        // Icons
         Icon successfull = new ImageIcon("/Users/alexseiichenko/IdeaProjects/SDT_101_Project-2/src/Part_2_2/success-icon-10.png");
         JOptionPane.showMessageDialog(panel, "Sucessfully added a new user!", "Success", JOptionPane.INFORMATION_MESSAGE, successfull);
     }
@@ -109,32 +109,30 @@ public class Users{
         // Ask user for a name input
         // Check if name is the same as we have in the System
         while (!loggedIn) {
-            System.out.println("\nEnter name:");
-            String name = scan.nextLine();
+            String name = JOptionPane.showInputDialog(null, "Enter Users Name:");
             boolean userFound = false;
             for (User i : userList) {
                 if (i.name.equals(name)) {
-                    System.out.println("\nEnter password:");
-                    String passwordIn = scan.nextLine();
+                    String passwordIn = JOptionPane.showInputDialog(null, "Enter Users Password:");
                     if (passwordIn.equals(i.password)) {
-                        System.out.println("\n\u001B[33m====You've successfully logged in====\u001B[0m");
+                        JOptionPane.showMessageDialog(null, "You've successfully logged in");
                         loggedIn = true;
                         userFound = true;
                         user = i;
                         break;
                     } else {
-                        System.out.println("\n\u001B[31mPassword incorrect!\u001B[0m");
+                        JOptionPane.showMessageDialog(null, "Password incorrect");
                     }
                 }
             }
             // if we can't find user, simply ask if he/she (USER) wants to create a new one
             // and if we create a new one - we ask USER to login into created user
             if (!userFound) {
-                System.out.println("\nName incorrect, want to create such user? Type Y/N");
-                String answ = scan.nextLine();
-                if (answ.toLowerCase().equals("y")) {
+                int answ = JOptionPane.showConfirmDialog(null, "Incorrect! Want to create such user?");
+                if (answ == 2) {
                     User newUser = new User();
-                    newUser.createUser();
+                    newUser.createUser(JOptionPane.showInputDialog(null, "Enter new users name").toString(),
+                            JOptionPane.showInputDialog(null, "Enter new users password").toString(), null);
                     userList.add(newUser);
                 }
             }
