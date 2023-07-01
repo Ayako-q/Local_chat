@@ -131,8 +131,10 @@ public class Users{
                 int answ = JOptionPane.showConfirmDialog(null, "Incorrect! Want to create such user?");
                 if (answ == 0) {
                     User newUser = new User();
-                    newUser.createUser(JOptionPane.showInputDialog("Enter new users name"),
-                            JOptionPane.showInputDialog("Enter new users password"), null);
+                    String uname = JOptionPane.showInputDialog("Enter new users name");
+                    String upass = JOptionPane.showInputDialog("Enter new users password");
+                    System.out.println(uname + upass);
+                    newUser.createUser(uname, upass, null);
                     userList.add(newUser);
                 }
             }
