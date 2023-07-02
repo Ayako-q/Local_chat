@@ -7,6 +7,7 @@ import java.util.Scanner;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class User extends Users
 {
     protected String name;

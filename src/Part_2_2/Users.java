@@ -31,11 +31,11 @@ public class Users{
         return userList;
     }
 
-    public void createUser(String name, String password, JPanel panel)
+    public void createUser(String name1, String password1, JPanel panel)
     {
         User newUser = new User();
-        newUser.name = name;
-        newUser.password = password;
+        newUser.name = name1;
+        newUser.password = password1;
         addUser(newUser);
 
         // Icons
