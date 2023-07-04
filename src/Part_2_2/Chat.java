@@ -19,25 +19,8 @@ class Chat
     //
     public void scene()
     {
-        JFrame mainWindow = new JFrame();
-        mainWindow.setSize(800, 600);
-        mainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        JPanel panel = new JPanel();
-        GridLayout gridLayout = new GridLayout(4, 2);
-        panel.setLayout(gridLayout);
-
-        // Adding buttons with functionality (they call local functions of User class)
-
-        JButton userCreate = new JButton("Create new user");
-
-        userCreate.addActionListener(a ->
-                newUser.createUser(JOptionPane.showInputDialog(panel, "Enter new users name").toString(),
-                        JOptionPane.showInputDialog(panel, "Enter new users password").toString(), panel)
-        );
-
         JButton showChat = new JButton("Show messages");
-        showChat.addActionListener(a -> chatWindow(newUser.logIn()));
+        showChat.addActionListener(a -> newUser.logIn());
 
         JButton sendMessage = new JButton("Send a new message");
         sendMessage.addActionListener(a -> newUser.sendText());
@@ -57,21 +40,7 @@ class Chat
         JButton exit = new JButton("Exit");
         exit.addActionListener(a -> System.exit(1));
 
-        // addings those buttons to the scene
-        panel.add(userCreate);
-        panel.add(showChat);
-        panel.add(sendMessage);
-        panel.add(sendContact);
-        panel.add(exportChat);
-        panel.add(exportUsers);
-        panel.add(usersImport);
-        panel.add(exit);
-
-        // adding scene to the main window
-        mainWindow.add(panel);
-        // Setting main window visible
-        mainWindow.setVisible(true);
-        /*System.out.println("""
+        System.out.println("""
         \n\u001B[33m
         Hi, this is your chat! What would you like to do?
         1. Create user
@@ -85,33 +54,6 @@ class Chat
         9. Users import
         0. Exit
         \u001B[0m
-        """);*/
-    }
-    public void chatWindow(User someUser)
-    {
-        // creating a new frame
-        JFrame chatFrame = new JFrame();
-        chatFrame.setSize(300, 800);
-        chatFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        JPanel mainPanel = new JPanel();
-        GridLayout box = new GridLayout(1, 3);
-
-        // Button that will close additional window
-        JButton back = new JButton("Back");
-        back.addActionListener(a -> chatFrame.getDefaultCloseOperation());
-
-        // Calling function to show chat messages and adding it to the panel
-        JLabel messages = newUser.messages.showMessages();
-
-        JLabel userInfo = new JLabel("User: " + newUser.name);
-
-        mainPanel.add(userInfo);
-        mainPanel.add(messages);
-        mainPanel.add(back);
-
-        // Add panel to the frame and set it visible
-        chatFrame.add(mainPanel);
-        chatFrame.setVisible(true);
+        """);
     }
 }
