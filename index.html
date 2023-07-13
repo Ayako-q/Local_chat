@@ -11,7 +11,7 @@
         {
             color: whitesmoke;
             font-family: Gill Sans, sans-serif;
-            font-size: 40px;
+            font-size: 55px;
         }
 
         body
@@ -19,6 +19,19 @@
             background-color: black;
             font-family: Gill Sans, sans-serif;
             text-align: center;
+        }
+
+        button
+        {
+            color: white;
+            font-size: 15px;
+            background: #2F2F2F;
+            width: auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         footer
@@ -35,15 +48,20 @@
             padding: 10px;
         }
 
-        p1
-        {
-            color: darkgray;
-        }
     </style>
+    <script>
+        function redirectToProjectPage()
+        {
+        }
+    </script>
 </head>
 <body>
     <h1>Local Chat</h1>
     <footer>Built by Ayako in 2023</footer>
-    <p1>In work...</p1>
+    <button onclick="redirectToProjectPage()">Create User</button>
+    <button onclick="redirectToProjectPage()">Send Text</button>
+    <button onclick="redirectToProjectPage()">Export Users</button>
+    <button onclick="redirectToProjectPage()">Import Users</button>
+
 </body>
 </html>
